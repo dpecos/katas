@@ -21,7 +21,7 @@ public class JavaLineValidator extends LineValidator {
 		} else {
 			boolean vacia = line.isEmpty();
 			boolean comentario = line.startsWith("//");
-			boolean comentarioCPP = singleLineCommentDetector.isSingleLineComment(line);
+			boolean comentarioCPP = singleLineCommentDetector.checkComment(line);
 			return !vacia && !comentario && !comentarioCPP;
 		}
 	}

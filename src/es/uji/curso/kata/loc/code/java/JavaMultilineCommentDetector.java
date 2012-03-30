@@ -1,30 +1,41 @@
 package es.uji.curso.kata.loc.code.java;
 
-import es.uji.curso.kata.loc.code.MultiLineCommentDetector;
+import es.uji.curso.kata.loc.code.CommentDetector;
 
-public class JavaMultilineCommentDetector extends MultiLineCommentDetector {
 
+public class JavaMultilineCommentDetector implements CommentDetector {
+	public static final String END_MULTILINE_COMMENT = "*/";
+	public static final String BEGIN_MULTILINE_COMMENT = "/*";
+	
+	private boolean isInsideMultilineComment;
+	
 	@Override
-	public boolean isCommentOpened(String line, boolean openCPPComment) {
-		if (line.indexOf("/*") >= 0 || openCPPComment) {
-			int posOpen=line.lastIndexOf("/*");
-			int posClose=line.lastIndexOf("*/");
+	public boolean checkComment(String line) {
+		if (line.indexOf(BEGIN_MULTILINE_COMMENT) >= 0 || isInsideMultilineComment) {
+			int posOpen=line.lastIndexOf(BEGIN_MULTILINE_COMMENT);
+			int posClose=line.lastIndexOf(END_MULTILINE_COMMENT);
 			if (posOpen >=0) {
 				if (posClose > posOpen) {
-					return false;
+					isInsideMultilineComment = false;
 				} else {
-					return true;
+					isInsideMultilineComment = true;
 				}
 			} else {
 				if (posClose==-1) {
-					return true;
+					isInsideMultilineComment = true;
 				} else {
-					return false;
+					isInsideMultilineComment = false;
 				}
 			}
 		} else {
-			return false;
+			isInsideMultilineComment = false;
 		}
+		return isInsideMultilineComment;
+	}
+
+	@Override
+	public boolean isInsideComment() {
+		return isInsideMultilineComment;
 	}
 
 }

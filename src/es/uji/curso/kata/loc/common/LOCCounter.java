@@ -1,15 +1,15 @@
 package es.uji.curso.kata.loc.common;
 
+import es.uji.curso.kata.loc.code.CommentDetector;
 import es.uji.curso.kata.loc.code.LineValidator;
-import es.uji.curso.kata.loc.code.MultiLineCommentDetector;
 
 public abstract class LOCCounter {
 	private static final String EOL = "\n";
 	
 	protected LineValidator lineValidator;
-	protected MultiLineCommentDetector commentDetector;
+	protected CommentDetector commentDetector;
 	
-	public LOCCounter(LineValidator lineValidator, MultiLineCommentDetector commentDetector) {
+	public LOCCounter(LineValidator lineValidator, CommentDetector commentDetector) {
 		this.lineValidator = lineValidator;
 		this.commentDetector = commentDetector;
 	}
@@ -18,13 +18,11 @@ public abstract class LOCCounter {
 		int counter = 0;
 		String[] lines = sourceCode.split(EOL);
 		
-		boolean openCPPComment = false;
-		
 		for(String line : lines) {
-			if (lineValidator.isValidCodeLine(line, openCPPComment)) {
+			if (lineValidator.isValidCodeLine(line, commentDetector.isInsideComment())) {
 				counter ++;
 			} 
-			openCPPComment = commentDetector.isCommentOpened(line, openCPPComment);
+			commentDetector.checkComment(line);
 		}
 		return counter;
 	}
