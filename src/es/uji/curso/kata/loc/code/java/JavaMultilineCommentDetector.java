@@ -12,25 +12,34 @@ public class JavaMultilineCommentDetector implements CommentDetector {
 	@Override
 	public boolean checkComment(String line) {
 		if (line.indexOf(BEGIN_MULTILINE_COMMENT) >= 0 || isInsideMultilineComment) {
-			int posOpen=line.lastIndexOf(BEGIN_MULTILINE_COMMENT);
-			int posClose=line.lastIndexOf(END_MULTILINE_COMMENT);
-			if (posOpen >=0) {
-				if (posClose > posOpen) {
-					isInsideMultilineComment = false;
-				} else {
-					isInsideMultilineComment = true;
-				}
-			} else {
-				if (posClose==-1) {
-					isInsideMultilineComment = true;
-				} else {
-					isInsideMultilineComment = false;
-				}
-			}
+			int openingPosition=line.lastIndexOf(BEGIN_MULTILINE_COMMENT);
+			int closingPosition=line.lastIndexOf(END_MULTILINE_COMMENT);
+			isInsideMultilineComment=isCommentClosed(openingPosition, closingPosition);
 		} else {
 			isInsideMultilineComment = false;
 		}
 		return isInsideMultilineComment;
+	}
+
+	/**
+	 * @param openingPosition
+	 * @param closingPosition
+	 * @return 
+	 */
+	private boolean isCommentClosed(int openingPosition, int closingPosition) {
+		if (openingPosition >=0) {
+			if (closingPosition > openingPosition) {
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			if (closingPosition==-1) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 
 	@Override
