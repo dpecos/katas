@@ -62,13 +62,13 @@ public class BowlingGameParser {
 
 			this.currentFrame.setKnockedDownPinsFirstTry(currentRoll);
 
-			checkCurentFrameIsStrike();
+			this.checkCurentFrameIsStrike();
 			
 		} else if (!this.isNewFrame()) {
 			
 			this.currentFrame.setKnockedDownPinsSecondTry(currentRoll);
 			
-			checkCurrentFrameIsSpare();
+			this.checkCurrentFrameIsSpare();
 			
 			this.currentFrame = null;
 		}

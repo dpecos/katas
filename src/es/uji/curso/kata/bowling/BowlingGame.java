@@ -15,7 +15,7 @@ public class BowlingGame {
 
 	public int calculateScore() {
 		int score = 0;
-		for (Frame frame: gameFrames) {
+		for (Frame frame: this.gameFrames) {
 			score += frame.getScore();
 		}
 		return score;

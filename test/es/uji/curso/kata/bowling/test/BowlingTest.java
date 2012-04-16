@@ -1,133 +1,100 @@
 package es.uji.curso.kata.bowling.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import es.uji.curso.kata.bowling.BowlingGame;
 
-
 public class BowlingTest {
 	
-	@Before
-	public void setUp() {
+	private int calculateBowlingScore(String gameString) {
+		BowlingGame game = new BowlingGame(gameString);
+		return game.calculateScore();
 	}
-
+	
 	@Test(expected=IllegalArgumentException.class)
 	public void unknownRoll() {
-		BowlingGame game = new BowlingGame("aabbccddeeffgghh");
+		calculateBowlingScore("aabbccddeeffgghh");
 	}
 	
 	@Test
 	public void zeroScoreGame() {
-		BowlingGame game = new BowlingGame("--------------------");
-		int actual = game.calculateScore();
-		assertEquals(0, actual);
+		assertEquals(0, calculateBowlingScore("--------------------"));
 	}
 	
 	@Test
 	public void oneScoreGame() {
-		BowlingGame game = new BowlingGame("1-------------------");
-		int actual = game.calculateScore();
-		assertEquals(1, actual);
+		assertEquals(1, calculateBowlingScore("1-------------------"));
 	}
 	
 	@Test
 	public void oneSpare() {
-		BowlingGame game = new BowlingGame("7/------------------");
-		int actual = game.calculateScore();
-		assertEquals(10, actual);
+		assertEquals(10, calculateBowlingScore("7/------------------"));
 	}
 	
 	@Test
 	public void oneStrike() {
-		BowlingGame game = new BowlingGame("X------------------");
-		int actual = game.calculateScore();
-		assertEquals(10, actual);
+		assertEquals(10, calculateBowlingScore("X------------------"));
 	}
 	
 	@Test
 	public void oneSpareAndOnePin() {
-		BowlingGame game = new BowlingGame("7/1-----------------");
-		int actual = game.calculateScore();
-		assertEquals(12, actual);
+		assertEquals(12, calculateBowlingScore("7/1-----------------"));
 	}
 	
 	@Test
 	public void oneSpareAndTwoPin() {
-		BowlingGame game = new BowlingGame("7/11----------------");
-		int actual = game.calculateScore();
-		assertEquals(13, actual);
+		assertEquals(13, calculateBowlingScore("7/11----------------"));
 	}
 	
 	@Test
 	public void twoSparesInARow() {
-		BowlingGame game = new BowlingGame("5/5/----------------");
-		int actual = game.calculateScore();
-		assertEquals(25, actual);
+		assertEquals(25, calculateBowlingScore("5/5/----------------"));
 	}
 	
 	@Test
 	public void oneSpareAtTheEnd() {
-		BowlingGame game = new BowlingGame("------------------5/5");
-		int actual = game.calculateScore();
-		assertEquals(15, actual);
+		assertEquals(15, calculateBowlingScore("------------------5/5"));
 	}
 	
 	@Test
 	public void oneStrikeAndOnePin() {
-		BowlingGame game = new BowlingGame("X1-----------------");
-		int actual = game.calculateScore();
-		assertEquals(12, actual);
+		assertEquals(12, calculateBowlingScore("X1-----------------"));
 	}
 	
 	@Test
 	public void oneStrikeAndTwoPin() {
-		BowlingGame game = new BowlingGame("X11----------------");
-		int actual = game.calculateScore();
-		assertEquals(14, actual);
+		assertEquals(14, calculateBowlingScore("X11----------------"));
 	}
 	
 	@Test
 	public void twoStrikesInARow() {
-		BowlingGame game = new BowlingGame("XX----------------");
-		int actual = game.calculateScore();
-		assertEquals(30, actual);
+		assertEquals(30, calculateBowlingScore("XX----------------"));
 	}
 	
 	@Test
 	public void threeStrikesInARow() {
-		BowlingGame game = new BowlingGame("XXX--------------");
-		int actual = game.calculateScore();
-		assertEquals(60, actual);
+		assertEquals(60, calculateBowlingScore("XXX--------------"));
 	}
 	
 	@Test
 	public void oneStrikeAtTheEnd() {
-		BowlingGame game = new BowlingGame("------------------X55");
-		int actual = game.calculateScore();
-		assertEquals(20, actual);
+		assertEquals(20, calculateBowlingScore("------------------X55"));
 	}
 	
 	@Test
 	public void perfectGame() {
-		BowlingGame game = new BowlingGame("XXXXXXXXXXXX");
-		int actual = game.calculateScore();
-		assertEquals(300, actual);
+		assertEquals(300, calculateBowlingScore("XXXXXXXXXXXX"));
 	}
 	
 	@Test
 	public void ninetyScoreGameWithoutSpares() {
-		BowlingGame game = new BowlingGame("9-9-9-9-9-9-9-9-9-9-");
-		int actual = game.calculateScore();
-		assertEquals(90, actual);
+		assertEquals(90, calculateBowlingScore("9-9-9-9-9-9-9-9-9-9-"));
 	}
 	
 	@Test
 	public void onehundredfiftyScoreGameWithSpares() {
-		BowlingGame game = new BowlingGame("5/5/5/5/5/5/5/5/5/5/5");
-		int actual = game.calculateScore();
-		assertEquals(150, actual);
+		assertEquals(150, calculateBowlingScore("5/5/5/5/5/5/5/5/5/5/5"));
 	}
 }
