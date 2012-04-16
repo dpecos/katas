@@ -6,15 +6,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import es.uji.curso.kata.loc.common.Language;
-import es.uji.curso.kata.loc.test.utils.KataTestsFacade;
+import es.uji.curso.kata.loc.test.utils.KataTestsAdapter;
 
 
 public class JavaLocTest {
-	KataTestsFacade counter = null;
+	KataTestsAdapter counter = null;
 	
 	@Before
 	public void setUp() {
-		counter = new KataTestsFacade(Language.Java);
+		counter = new KataTestsAdapter(Language.Java);
 	}
 	
 	@Test

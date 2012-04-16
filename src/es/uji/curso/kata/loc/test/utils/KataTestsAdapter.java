@@ -4,11 +4,11 @@ import es.uji.curso.kata.loc.LOCCounterFactory;
 import es.uji.curso.kata.loc.common.LOCCounter;
 import es.uji.curso.kata.loc.common.Language;
 
-public class KataTestsFacade {
+public class KataTestsAdapter {
 	private Language language;
 
 
-	public KataTestsFacade(Language language) {
+	public KataTestsAdapter(Language language) {
 		this.language = language;
 	}
 	
