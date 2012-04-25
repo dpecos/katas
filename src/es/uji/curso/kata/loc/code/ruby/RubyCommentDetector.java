@@ -13,7 +13,7 @@ public class RubyCommentDetector implements CommentDetector {
 
 	@Override
 	public boolean isInsideComment() {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
