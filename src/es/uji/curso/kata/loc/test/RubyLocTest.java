@@ -1,20 +1,20 @@
 package es.uji.curso.kata.loc.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import es.uji.curso.kata.loc.common.Language;
-import es.uji.curso.kata.loc.test.utils.KataTestsFacade;
+import es.uji.curso.kata.loc.test.utils.KataTestsAdapter;
 
 
 public class RubyLocTest {
-	KataTestsFacade counter = null;
+	KataTestsAdapter counter = null;
 	
 	@Before
 	public void setUp() {
-		counter = new KataTestsFacade(Language.Ruby);
+		counter = new KataTestsAdapter(Language.Ruby);
 	}
 	
 	@Test
