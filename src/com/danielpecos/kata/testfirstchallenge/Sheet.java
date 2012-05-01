@@ -3,6 +3,8 @@ package com.danielpecos.kata.testfirstchallenge;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.danielpecos.kata.testfirstchallenge.parser.AST;
+
 public class Sheet {
 	
 	Map<String, String> cells = null;
@@ -14,7 +16,7 @@ public class Sheet {
 	public String get(String theCell) {
 		String literal = this.getLiteral(theCell);
 		if (literal.startsWith("=")) {
-			Integer value = new NumericExpressionParser().parse(literal.substring(1));
+			Integer value = new AST(literal.substring(1)).eval();
 			return value.toString();
 		} else {
 			return literal;
