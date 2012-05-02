@@ -1,6 +1,6 @@
-package com.danielpecos.kata.testfirstchallenge.parser.expressions;
+package com.danielpecos.kata.testfirstchallenge.parser.syntactic;
 
-import com.danielpecos.kata.testfirstchallenge.parser.tokens.NumericLiteral;
+import com.danielpecos.kata.testfirstchallenge.parser.lexic.NumericLiteral;
 
 
 public class LiteralExpression extends Expression {

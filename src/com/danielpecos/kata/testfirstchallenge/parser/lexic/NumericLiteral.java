@@ -1,6 +1,6 @@
-package com.danielpecos.kata.testfirstchallenge.parser.tokens;
+package com.danielpecos.kata.testfirstchallenge.parser.lexic;
 
-public class NumericLiteral implements Token {
+public class NumericLiteral extends Token {
 	String value;
 	
 	public NumericLiteral(String value) {

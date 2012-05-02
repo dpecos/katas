@@ -3,7 +3,7 @@ package com.danielpecos.kata.testfirstchallenge;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.danielpecos.kata.testfirstchallenge.parser.AST;
+import com.danielpecos.kata.testfirstchallenge.parser.AbstractSyntaxTree;
 
 public class Sheet {
 	
@@ -16,7 +16,7 @@ public class Sheet {
 	public String get(String theCell) {
 		String literal = this.getLiteral(theCell);
 		if (literal.startsWith("=")) {
-			Integer value = new AST(literal.substring(1)).eval();
+			Integer value = new AbstractSyntaxTree(literal.substring(1)).eval();
 			return value.toString();
 		} else {
 			return literal;

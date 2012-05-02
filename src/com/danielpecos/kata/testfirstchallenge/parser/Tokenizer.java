@@ -1,11 +1,11 @@
 package com.danielpecos.kata.testfirstchallenge.parser;
 
-import com.danielpecos.kata.testfirstchallenge.parser.tokens.ClosingParenthesesOperator;
-import com.danielpecos.kata.testfirstchallenge.parser.tokens.MultiplyOperator;
-import com.danielpecos.kata.testfirstchallenge.parser.tokens.NumericLiteral;
-import com.danielpecos.kata.testfirstchallenge.parser.tokens.OpeningParenthesesOperator;
-import com.danielpecos.kata.testfirstchallenge.parser.tokens.SumOperator;
-import com.danielpecos.kata.testfirstchallenge.parser.tokens.Token;
+import com.danielpecos.kata.testfirstchallenge.parser.lexic.ClosingParenthesis;
+import com.danielpecos.kata.testfirstchallenge.parser.lexic.MultiplyOperator;
+import com.danielpecos.kata.testfirstchallenge.parser.lexic.NumericLiteral;
+import com.danielpecos.kata.testfirstchallenge.parser.lexic.OpeningParenthesis;
+import com.danielpecos.kata.testfirstchallenge.parser.lexic.SumOperator;
+import com.danielpecos.kata.testfirstchallenge.parser.lexic.Token;
 
 public class Tokenizer {
 
@@ -25,9 +25,9 @@ public class Tokenizer {
 
 			switch (currentChar) {
 			case '(':
-				return new OpeningParenthesesOperator();
+				return new OpeningParenthesis();
 			case ')':
-				return new ClosingParenthesesOperator();
+				return new ClosingParenthesis();
 			case '*':
 				return new MultiplyOperator();
 			case '+':

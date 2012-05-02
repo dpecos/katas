@@ -1,6 +1,6 @@
-package com.danielpecos.kata.testfirstchallenge.parser.expressions;
+package com.danielpecos.kata.testfirstchallenge.parser.syntactic;
 
-import com.danielpecos.kata.testfirstchallenge.parser.tokens.Operator;
+import com.danielpecos.kata.testfirstchallenge.parser.lexic.Operator;
 
 public class OperatorExpression extends Expression {
 	private Operator operator;

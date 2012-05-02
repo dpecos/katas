@@ -1,4 +1,4 @@
-package com.danielpecos.kata.testfirstchallenge.parser.expressions;
+package com.danielpecos.kata.testfirstchallenge.parser.syntactic;
 
 public class ParenthesizedExpression extends Expression {
 	

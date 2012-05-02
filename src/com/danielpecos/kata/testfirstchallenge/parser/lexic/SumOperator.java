@@ -1,4 +1,4 @@
-package com.danielpecos.kata.testfirstchallenge.parser.tokens;
+package com.danielpecos.kata.testfirstchallenge.parser.lexic;
 
 
 public class SumOperator extends Operator {

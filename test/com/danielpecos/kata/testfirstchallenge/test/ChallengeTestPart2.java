@@ -54,7 +54,7 @@ public class ChallengeTestPart2 {
 	}
 
 	@Test
-	public void testPrecedence() {
+	public void testPrecedence1() {
 		Sheet sheet = new Sheet();
 		sheet.put("A1", "=7+2*3");
 		assertEquals("Precedence", "13", sheet.get("A1"));
