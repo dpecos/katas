@@ -18,8 +18,12 @@ public class OperatorExpression extends Expression {
 		if (this.operator != null) {
 			if (this.operator.value().equalsIgnoreCase("*")) {
 				return this.leftOp.eval() * this.rightOp.eval();
+			} else if (this.operator.value().equalsIgnoreCase("/")) {
+				return this.leftOp.eval() / this.rightOp.eval();						
 			} else if (this.operator.value().equalsIgnoreCase("+")) {
-					return this.leftOp.eval() + this.rightOp.eval();				
+					return this.leftOp.eval() + this.rightOp.eval();	
+			} else if (this.operator.value().equalsIgnoreCase("-")) {
+				return this.leftOp.eval() - this.rightOp.eval();					
 			} else {
 				return 0;
 			}

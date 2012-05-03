@@ -45,6 +45,20 @@ public class ChallengeTestPart2 {
 		sheet.put("A1", "=2*3*4");
 		assertEquals("Times", "24", sheet.get("A1"));
 	}
+	
+	@Test
+	public void testParenthesesMultiply() {
+		Sheet sheet = new Sheet();
+		sheet.put("A1", "=(3*2)");
+		assertEquals("Parends", "6", sheet.get("A1"));
+	}
+	
+	@Test
+	public void testParenthesesSum() {
+		Sheet sheet = new Sheet();
+		sheet.put("A1", "=(3+2)");
+		assertEquals("Parends", "5", sheet.get("A1"));
+	}	
 
 	@Test
 	public void testAdd() {

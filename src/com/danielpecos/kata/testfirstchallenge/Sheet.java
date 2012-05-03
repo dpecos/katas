@@ -6,9 +6,9 @@ import java.util.Map;
 import com.danielpecos.kata.testfirstchallenge.parser.AbstractSyntaxTree;
 
 public class Sheet {
-	
+
 	Map<String, String> cells = null;
-	
+
 	public Sheet() {
 		this.cells = new HashMap<String, String>();
 	}
@@ -16,8 +16,13 @@ public class Sheet {
 	public String get(String theCell) {
 		String literal = this.getLiteral(theCell);
 		if (literal.startsWith("=")) {
-			Integer value = new AbstractSyntaxTree(literal.substring(1)).eval();
-			return value.toString();
+			String targetCell = literal.substring(1);
+			if (targetCell.equalsIgnoreCase(theCell)) {
+				return "#Circular";
+			} else {
+				Integer value = new AbstractSyntaxTree(this, targetCell).eval();
+				return value.toString();
+			}
 		} else {
 			return literal;
 		}
