@@ -5,16 +5,16 @@ class CodeBreaker
     @matcher = new CombinationMatcher combination
 
   checkCombination: (combination) ->
-    combination = combination.toUpperCase() if combination
+    combination = combination?.toUpperCase()
 
     @matcher.calculateMatches combination if @validator.isValid combination
 
 class CombinationValidator
   validGuesses = 'RAMVNI'.split ''
-  length = 4
+  validLength = 4
 
   isValid: (combination) ->
-    throw new Error 'Illegal combination' if not combination? or combination?.length != @length
+    throw new Error 'Illegal combination' if not combination? or combination?.length != validLength
     throw new Error 'Illegal guess' if not @isValidCombination combination
     true
 
@@ -49,7 +49,7 @@ class CombinationMatcher
 
     result = ''
     ((isOk) -> result += 'X' if isOk) isOk for isOk in correctGuessesMap
-    ((isOk) -> result += '*' if isOk) isOk for isOk in misplacedGuessesMap
+    ((isMisplaced) -> result += '*' if isMisplaced) isMisplaced for isMisplaced in misplacedGuessesMap
     result
 
   mergeCorrectAndMisplacedGuesses: (correctGuessesMap, misplacedGuessesMap) ->
