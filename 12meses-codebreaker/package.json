@@ -1,0 +1,10 @@
+{
+   "name": "http-server",
+   "preferGlobal": true,
+   "version": "0.3.0",
+   "dependencies" : {
+      "grunt-coffee": "*",
+      "grunt-coffeelint": "*",
+      "grunt-jasmine-runner": "*"
+   }
+}
